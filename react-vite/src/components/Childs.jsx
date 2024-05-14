@@ -54,6 +54,7 @@ return(<>
 </div>
 <div>
     <h2>the tag name can also be passed from parent but it has to be in upper case</h2>
+    <br/> here the tag name is in ButtonName and it is inside double quotes
     <ButtonName>{children}</ButtonName>
 </div>
 </>)

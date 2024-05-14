@@ -6,7 +6,9 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import UserContextProvider from './context/useContext';
 import Childs from './components/Childs';
-import List from './components/List'
+import List from './components/List';
+import Player from './components/Gameboard/Player';
+import Gameboard from './components/Gameboard/Gameboard'
 function App() {
 
  const handleClickfromChild = () => {
@@ -25,29 +27,46 @@ function App() {
   name: "ghr",
   place: "ghyr"
  }]
- 
+ const [currentSymbol, setCurrentSymbol] = useState("X");
+const handleSymbol = () => {
+  setCurrentSymbol((prev) => (prev == "X") ? "O" : "X");
+  createFullDetails()
+  }
+  const [fullDetails, setfullDetails] = useState([]);
+  const createFullDetails = () => {
+    setfullDetails((prev) => {
+      
+    })
+  }
+
   return(<>
+ <Player name = "player1" symbol = "X" isActive= {currentSymbol == "X"}></Player>
+ <Player name = "player2" symbol = "O" isActive= {currentSymbol == "O"}></Player>
+  <Gameboard 
+  onPlayerSwitch = {handleSymbol} 
+  currentSymbol = {currentSymbol}
+  />
   <UserContextProvider>
-  <Login>children</Login>
+  {/* <Login>children</Login>
   {arr.map((item) => (
   <List key = {item.name} {...item}
   ></List>
-  ))}
+  ))} */}
  
 
  
   <Profile ></Profile>
 
-  <Childs 
+  {/* <Childs 
   onSelected = {true}
   onSelect = {handleClickfromChild}
   buttonPass = {() => handleParams("button")}
   id = "idPass"
   className="class"
   ButtonName="button"
-  >children val</Childs>
+  >children val</Childs> */}
   </UserContextProvider>
- 
+
   </>)
    
   
